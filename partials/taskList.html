@@ -1,0 +1,20 @@
+
+<br/>
+<div class="task" ng-repeat="task in tasks">
+	<a href="#/task/{{task._id}}">{{task.topic}}</a>
+	<div class="task-details">
+		<p>id: {{task._id}}</p>
+		<p>explanation: {{task.explanation}}</p>
+		<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+		<p ng-show="task.started">start time: {{task.started | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+		<p ng-show="task.finished">finish time: {{task.finished | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+		<p ng-show="task.removed">removal time: {{task.removed | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+		
+		<div ng-show="!task.removed">
+		  <br/>
+		  <a ng-show="!task.started" href="#/start/{{task._id}}">Start task</a><br/>
+		  <a ng-show="!task.finished" href="#/finish/{{task._id}}">Finish task</a><br/>
+		  <a href="#/remove/{{task._id}}">Remove task</a>
+		</div>
+	</div>
+</div>

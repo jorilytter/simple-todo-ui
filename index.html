@@ -16,17 +16,21 @@
 
 	<div id="main">
 
-		<nav class="{{active}} ng-click="$event.preventDefault()">
-		  <a href="#" class="todo" ng-click="active='todo'">ToDo</a> 
-		  <a href="#" class="ongoing" ng-click="active='ongoing'">Ongoing</a> 
-		  <a href="#" class="done" ng-click="active='done'">Done</a> 
-		  <a href="#" class="removed" ng-click="active='removed'">removed</a>
+		<nav>
+		  <!--a href="#" class="todo" ng-click="active='todo'">ToDo</a--> 
+		  <a href="#/todo" class="todo">Todo</a>
+		  <a href="#/ongoing" class="ongoing">Ongoing</a> 
+		  <a href="#/done" class="done">Done</a> 
+		  <a href="#/removed" class="removed">Removed</a>
 		</nav>
 
+        <ng-view></ng-view>
+        <!--
 		<div ng-switch="active">
 			<div ng-switch-default>
 				<h2>Simple todo</h2>
 			</div>
+			
 			<div ng-switch-when="todo" ng-controller="TodoCtrl">
 				<h2>Created tasks</h2>
 				<div ng-repeat="task in tasks">
@@ -34,7 +38,7 @@
 						<a href="#" ng-click="show = !show">{{task.topic}}</a>
 					</h3>
 					<div class="task-details" ng-show="show">
-						<p>id: {{task._id}}</p>
+						<p><a href="#/task/{{task._id}}">id: {{task._id}}</a></p>
 						<p>explanation: {{task.explanation}}</p>
 						<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
 					</div>
@@ -84,6 +88,7 @@
 				</div>
 			</div>
 		</div>
+		-->
 	</div>
 
 </body>

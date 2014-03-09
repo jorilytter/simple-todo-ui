@@ -1,0 +1,12 @@
+<br/>
+<div class="task">
+<div class="task-details">
+	<h3>{{task.topic}}</h3>
+	<p>id: {{task._id}}</p>
+	<p>explanation: {{task.explanation}}</p>
+	<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+	<p ng-show="task.started">start time: {{task.started | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+    <p ng-show="task.finished">finish time: {{task.finished | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+    <p ng-show="task.removed">removal time: {{task.removed | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+</div>
+</div>
