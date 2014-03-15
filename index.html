@@ -2,94 +2,24 @@
 <html>
 <head>
 <title>Todo list</title>
-<link rel="stylesheet" media="screen" href="main.css"></link>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
-<script src="todo.js"></script>
+    <link rel="stylesheet" media="screen" href="styles/main.css"></link>
+    <script src="scripts/angular.js"></script>
+    <script	src="scripts/angular-resource.js"></script>
+    <script	src="scripts/angular-route.js"></script>
+    <script src="scripts/todo.js"></script>
 </head>
 
 <body ng-app="todoApp">
 
-	<div id="main">
+    <nav>
+        <a href="#/todo">Todo</a>
+        <a href="#/ongoing">Ongoing</a> 
+        <a href="#/done">Done</a> 
+        <a href="#/removed">Removed</a>
+    </nav>
 
-		<nav>
-		  <!--a href="#" class="todo" ng-click="active='todo'">ToDo</a--> 
-		  <a href="#/todo" class="todo">Todo</a>
-		  <a href="#/ongoing" class="ongoing">Ongoing</a> 
-		  <a href="#/done" class="done">Done</a> 
-		  <a href="#/removed" class="removed">Removed</a>
-		</nav>
-
-        <ng-view></ng-view>
-        <!--
-		<div ng-switch="active">
-			<div ng-switch-default>
-				<h2>Simple todo</h2>
-			</div>
-			
-			<div ng-switch-when="todo" ng-controller="TodoCtrl">
-				<h2>Created tasks</h2>
-				<div ng-repeat="task in tasks">
-					<h3>
-						<a href="#" ng-click="show = !show">{{task.topic}}</a>
-					</h3>
-					<div class="task-details" ng-show="show">
-						<p><a href="#/task/{{task._id}}">id: {{task._id}}</a></p>
-						<p>explanation: {{task.explanation}}</p>
-						<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-					</div>
-				</div>
-			</div>
-
-			<div ng-switch-when="ongoing" ng-controller="OngoingCtrl">
-				<h2>Started tasks</h2>
-				<div ng-repeat="task in tasks">
-					<h3>
-						<a href="#" ng-click="show = !show">{{task.topic}}</a>
-					</h3>
-					<div class="task-details" ng-show="show">
-						<p>id: {{task._id}}</p>
-						<p>explanation: {{task.explanation}}</p>
-						<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-						<p>start time: {{task.started | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-					</div>
-				</div>
-			</div>
-			<div ng-switch-when="done" ng-controller="DoneCtrl">
-				<h2>Finished tasks</h2>
-				<div ng-repeat="task in tasks">
-					<h3>
-						<a href="#" ng-click="show = !show">{{task.topic}}</a>
-					</h3>
-					<div class="task-details" ng-show="show">
-						<p>id: {{task._id}}</p>
-						<p>explanation: {{task.explanation}}</p>
-						<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-						<p>start time: {{task.started | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-						<p>finish time: {{task.finished | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-					</div>
-				</div>
-			</div>
-			<div ng-switch-when="removed" ng-controller="RemovedCtrl">
-				<h2>Removed tasks</h2>
-				<div ng-repeat="task in tasks">
-					<h3>
-						<a href="#" ng-click="show = !show">{{task.topic}}</a>
-					</h3>
-					<div class="task-details" ng-show="show">
-						<p>id: {{task._id}}</p>
-						<p>explanation: {{task.explanation}}</p>
-						<p>removal time: {{task.removed | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		-->
-	</div>
+    <ng-view>
+    </ng-view>
 
 </body>
 </html>

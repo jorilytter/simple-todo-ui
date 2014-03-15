@@ -1,20 +1,28 @@
-
+<br/>
+<div class="new-task">
+	<p>
+		Topic&nbsp;<input class="new-topic" ng-model="newTopic">
+		&nbsp;Description&nbsp;<input class="new-description"ng-model="newDescription">
+		&nbsp;<button class="task-action" ng-click="createTask(newTopic,newDescription)">Add task</button>
+	</p>
+</div>
 <br/>
 <div class="task" ng-repeat="task in tasks">
-	<a href="#/task/{{task._id}}">{{task.topic}}</a>
+    <a class="id" href="#/task/{{task._id}}">{{task._id}}</a>
+    <br/><br/>
+	<input class="topic" ng-show="!showActions()" class="topic" type="text" ng-model="task.topic" />
+	<h3 ng-show="showActions()">{{task.topic}}</h3>
 	<div class="task-details">
-		<p>id: {{task._id}}</p>
-		<p>explanation: {{task.explanation}}</p>
-		<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-		<p ng-show="task.started">start time: {{task.started | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-		<p ng-show="task.finished">finish time: {{task.finished | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-		<p ng-show="task.removed">removal time: {{task.removed | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+		<br ng-show="!showActions()" />
+		<textarea class="explanation" ng-show="!showActions()" class="explanation" type="text" ng-model="task.explanation"></textarea>
+		<p ng-show="showActions()">{{task.explanation}}</p>
 		
-		<div ng-show="!task.removed">
-		  <br/>
-		  <a ng-show="!task.started" href="#/start/{{task._id}}">Start task</a><br/>
-		  <a ng-show="!task.finished" href="#/finish/{{task._id}}">Finish task</a><br/>
-		  <a href="#/remove/{{task._id}}">Remove task</a>
+		
+		<div class="task-bottom" ng-show="!showActions()">
+		  <button class="task-action" ng-disabled="task.finished" ng-click="updateTask(task._id,task.topic, task.explanation)">Update</button>&nbsp;
+		  <button class="task-action" ng-disabled="task.started" ng-click="startTask(task._id)">Start</button>&nbsp;
+		  <button class="task-action" ng-disabled="task.finished" ng-click="finishTask(task._id,task.topic,task.explanation)">Finish</button>&nbsp;
+		  <button class="task-action" ng-disabled="task.finished" ng-click="removeTask(task._id)">Remove</button>
 		</div>
 	</div>
 </div>

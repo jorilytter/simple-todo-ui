@@ -1,12 +1,21 @@
 <br/>
-<div class="task">
-<div class="task-details">
-	<h3>{{task.topic}}</h3>
-	<p>id: {{task._id}}</p>
-	<p>explanation: {{task.explanation}}</p>
-	<p>creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-	<p ng-show="task.started">start time: {{task.started | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-    <p ng-show="task.finished">finish time: {{task.finished | date:'dd.MM.yyyy HH:mm:ss'}}</p>
-    <p ng-show="task.removed">removal time: {{task.removed | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+<div class="new-task">
+    <p>
+        Topic&nbsp;<input class="new-topic" ng-model="newTopic">
+        &nbsp;Description&nbsp;<input class="new-description"ng-model="newDescription">
+        &nbsp;<button class="task-action" ng-click="createTask(newTopic,newDescription)">Add task</button>
+    </p>
 </div>
+<br/>
+<div class="task">
+	<p class="id">{{task._id}}</p>
+	<h3>{{task.topic}}</h3>
+	<p>{{task.explanation}}</p>
+	<div class="task-bottom">
+	   <hr>
+	   <p class="small">creation time: {{task.created | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+	   <p class="small" ng-show="task.started">start time: {{task.started | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+       <p class="small" ng-show="task.finished">finish time: {{task.finished | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+       <p class="small" ng-show="task.removed">removal time: {{task.removed | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+    </div>
 </div>
