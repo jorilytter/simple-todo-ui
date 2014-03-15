@@ -18,42 +18,6 @@ app.controller('SingleTaskCtrl', function($scope, $http, $routeParams) {
 
 app.controller('TaskCtrl', function($scope, $http, $route, $location) {
 	
-	$scope.getTodo = function() {
-		$http.get(server+'task/todo')
-		.success(function(data) {
-			$scope.tasks = data.tasks;
-		}).error(function() {
-			alert('something terrible happened');
-		});
-	};
-	
-	$scope.getOngoing = function() {
-		$http.get(server+'task/ongoing')
-		.success(function(data) {
-			$scope.tasks = data.tasks;
-		}).error(function() {
-			alert('something terrible happened');
-		});
-	};
-	
-	$scope.getDone = function() {
-		$http.get(server+'task/done')
-		.success(function(data) {
-			$scope.tasks = data.tasks;
-		}).error(function() {
-			alert('something terrible happened');
-		});
-	};
-	
-	$scope.getRemoved = function() {
-		$http.get(server+'task/removed')
-		.success(function(data) {
-			$scope.tasks = data.tasks;
-		}).error(function() {
-			alert('something terrible happened');
-		});
-	};
-	
 	$scope.createTask = function(topic, explanation) {
 		var task = {
 				topic:topic,
@@ -107,17 +71,25 @@ app.controller('TaskCtrl', function($scope, $http, $route, $location) {
 		});
 	};
 
+	$scope.url = '';
 	if ($location.path() == '/ongoing') {
-		$scope.getOngoing();
+		$scope.url = server+'task/ongoing';
 	} else if ($location.path() == '/done') {
-		$scope.getDone();
+		$scope.url = server+'task/done';
 	} else if ($location.path() == '/todo') {
-		$scope.getTodo();
+		$scope.url = server+'task/todo';
 	} else if ($location.path() == '/removed') {
-		$scope.getRemoved();
+		$scope.url = server+'task/removed';
 	} else {
 		$location.path('/todo');
 	}
+	
+	$http.get($scope.url)
+	.success(function(data) {
+		$scope.tasks = data.tasks;
+	}).error(function() {
+		alert('something terrible happened');
+	});
 	
 	$scope.showActions = function() {
 		return $location.path() == '/removed' || $location.path() == '/done';
