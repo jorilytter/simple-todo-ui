@@ -19,7 +19,7 @@ app.controller('SingleTaskCtrl', function($scope, $http, $routeParams) {
 app.controller('TaskCtrl', function($scope, $http, $route, $location) {
 	
 	$scope.getTodo = function() {
-		$http.get(server+'task/create')
+		$http.get(server+'task/todo')
 		.success(function(data) {
 			$scope.tasks = data.tasks;
 		}).error(function() {
@@ -28,7 +28,7 @@ app.controller('TaskCtrl', function($scope, $http, $route, $location) {
 	};
 	
 	$scope.getOngoing = function() {
-		$http.get(server+'task/start')
+		$http.get(server+'task/ongoing')
 		.success(function(data) {
 			$scope.tasks = data.tasks;
 		}).error(function() {
@@ -37,7 +37,7 @@ app.controller('TaskCtrl', function($scope, $http, $route, $location) {
 	};
 	
 	$scope.getDone = function() {
-		$http.get(server+'task/finish')
+		$http.get(server+'task/done')
 		.success(function(data) {
 			$scope.tasks = data.tasks;
 		}).error(function() {
@@ -46,7 +46,7 @@ app.controller('TaskCtrl', function($scope, $http, $route, $location) {
 	};
 	
 	$scope.getRemoved = function() {
-		$http.get(server+'task/remove')
+		$http.get(server+'task/removed')
 		.success(function(data) {
 			$scope.tasks = data.tasks;
 		}).error(function() {
